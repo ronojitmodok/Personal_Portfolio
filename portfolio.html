@@ -1,0 +1,489 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Website</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#0f172a;
+      color:#fff;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* Navbar */
+
+    nav{
+      padding:20px 0;
+      position:sticky;
+      top:0;
+      background:#0f172a;
+      z-index:1000;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-wrapper{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .menu{
+      display:flex;
+      gap:30px;
+    }
+
+    .menu a{
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    .menu a:hover{
+      color:#38bdf8;
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:linear-gradient(to right,#0f172a,#111827);
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:50px;
+    }
+
+    .hero-text h3{
+      color:#38bdf8;
+      font-size:24px;
+      margin-bottom:15px;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      margin-bottom:30px;
+      font-size:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:#38bdf8;
+      color:#000;
+      border-radius:10px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#0ea5e9;
+    }
+
+    .hero-img img{
+      width:100%;
+      border-radius:20px;
+      border:4px solid #38bdf8;
+    }
+
+    /* About */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:45px;
+      color:#38bdf8;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#cbd5e1;
+    }
+
+    .about-content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-content img{
+      width:100%;
+      border-radius:20px;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      margin-bottom:20px;
+    }
+
+    /* Skills */
+
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:#1e293b;
+      padding:35px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .skill-card:hover{
+      transform:translateY(-8px);
+      border-color:#38bdf8;
+    }
+
+    .skill-card h3{
+      margin-bottom:15px;
+      color:#38bdf8;
+    }
+
+    /* Projects */
+
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#1e293b;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.3s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project-info{
+      padding:25px;
+    }
+
+    .project-info h3{
+      margin-bottom:15px;
+      color:#38bdf8;
+    }
+
+    .project-info p{
+      color:#cbd5e1;
+    }
+
+    /* Contact */
+
+    .contact-box{
+      background:#1e293b;
+      padding:50px;
+      border-radius:25px;
+      text-align:center;
+    }
+
+    .contact-box h2{
+      margin-bottom:20px;
+      color:#38bdf8;
+    }
+
+    .contact-box p{
+      margin-bottom:10px;
+      color:#cbd5e1;
+    }
+
+    footer{
+      text-align:center;
+      padding:25px 0;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#94a3b8;
+    }
+
+    @media(max-width:900px){
+
+      .hero-content,
+      .about-content{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- Navbar -->
+
+  <nav>
+    <div class="container nav-wrapper">
+
+      <div class="logo">Ronojit Modok</div>
+
+      <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Skills</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Hero -->
+
+  <section class="hero">
+
+    <div class="container hero-content">
+
+      <div class="hero-text">
+
+        <h3>Hello, I'm</h3>
+
+        <h1>Web Developer & Designer</h1>
+
+        <p>
+          I create modern, responsive and beautiful websites
+          with clean UI/UX design and powerful functionality.
+        </p>
+
+        <a href="#" class="btn">Hire Me</a>
+
+      </div>
+
+      <div class="hero-img">
+
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop" alt="">
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- About -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Know more about my experience and skills</p>
+      </div>
+
+      <div class="about-content">
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1200&auto=format&fit=crop" alt="">
+        </div>
+
+        <div class="about-text">
+
+          <p>
+            I am a passionate web developer with experience
+            in frontend and backend development.
+          </p>
+
+          <p>
+            I specialize in creating responsive websites,
+            UI design and modern web applications.
+          </p>
+
+          <a href="#" class="btn">Download CV</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>My Skills</h2>
+        <p>Technologies I work with</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <h3>HTML</h3>
+          <p>Modern semantic website structure.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>CSS</h3>
+          <p>Responsive and attractive UI design.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>JavaScript</h3>
+          <p>Interactive and dynamic functionality.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>React</h3>
+          <p>Modern frontend web applications.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Some of my recent works</p>
+      </div>
+
+      <div class="project-grid">
+
+        <div class="project-card">
+
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="">
+
+          <div class="project-info">
+            <h3>Business Website</h3>
+            <p>Responsive corporate website design.</p>
+          </div>
+
+        </div>
+
+        <div class="project-card">
+
+          <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1200&auto=format&fit=crop" alt="">
+
+          <div class="project-info">
+            <h3>E-Commerce Site</h3>
+            <p>Modern online shopping platform UI.</p>
+          </div>
+
+        </div>
+
+        <div class="project-card">
+
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" alt="">
+
+          <div class="project-info">
+            <h3>Portfolio Design</h3>
+            <p>Creative personal portfolio website.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2>Contact Me</h2>
+
+        <p>Email: yourmail@gmail.com</p>
+
+        <p>Phone: +8801XXXXXXXXX</p>
+
+        <p>Bangladesh</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    © 2026 Portfolio Website. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
+```
